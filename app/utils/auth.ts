@@ -1,7 +1,10 @@
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import nodemailer from "next-auth/providers/nodemailer";
+import prisma from "./db";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  adapter: PrismaAdapter(prisma),
   providers: [
     nodemailer({
       server: {
@@ -15,4 +18,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       from: process.env.EMAIL_FROM,
     }),
   ],
+  pages: {
+    verifyRequest: "/verify",
+  },
 });
