@@ -76,7 +76,7 @@ export function CreateInvoice() {
             </div>
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline">
+                <Button variant="outline" className="w-full sm:w-auto">
                   <Calendar1 />
                   {selectedDate ? (
                     new Intl.DateTimeFormat("en-US", {
@@ -87,12 +87,13 @@ export function CreateInvoice() {
                   )}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent>
+              <PopoverContent className="p-0 w-full max-w-xs sm:max-w-md">
                 <Calendar
                   selected={selectedDate}
                   onSelect={(date) => setSelectedDate(date || new Date())}
                   mode="single"
                   fromDate={new Date()}
+                  className="w-full"
                 />
               </PopoverContent>
             </Popover>
