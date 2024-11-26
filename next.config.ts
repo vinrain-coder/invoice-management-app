@@ -7,7 +7,12 @@ const nextConfig: NextConfig = {
   typescript: { ignoreBuildErrors: true },
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      config.resolve.fallback.fs = false; // Prevents `fs` from being bundled
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false, // Often needed with `net`
+      };
     }
     return config;
   },
