@@ -83,7 +83,7 @@ export function CreateInvoice() {
                       dateStyle: "long",
                     }).format(selectedDate)
                   ) : (
-                    <span>Pick Date</span>
+                    <span>Pick a Date</span>
                   )}
                 </Button>
               </PopoverTrigger>
