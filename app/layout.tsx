@@ -1,16 +1,12 @@
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 
-const inter = Inter({
+// Import Montserrat with additional weights
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "700"],
-});
-const robotoMono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["400", "700"],
+  variable: "--font-sans", // Custom CSS variable for Montserrat
+  weight: ["400", "500", "600", "700", "800"], // Added more weights
 });
 
 export const metadata: Metadata = {
@@ -25,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
-        {children}
-      </body>
+      <body className={`${montserrat.variable} antialiased`}>{children}</body>
     </html>
   );
 }
