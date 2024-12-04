@@ -13,12 +13,13 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Button } from "./ui/button";
-import { Calendar } from "./ui/calendar";
-import { Calendar1 } from "lucide-react";
+import { Calendar } from "./ui/calendar"; // Ensure this is a Shadcn Calendar
+import { Calendar as CalendarIcon } from "lucide-react"; // Correct the icon import
 import { useState } from "react";
 
 export function CreateInvoice() {
   const [selectedDate, setSelectedDate] = useState(new Date());
+
   return (
     <Card className="w-full max-w-4xl mx-auto">
       <CardContent className="p-6">
@@ -70,14 +71,15 @@ export function CreateInvoice() {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="">
-            <div className="">
-              <Label>Date</Label>
-            </div>
+          <div>
+            <Label>Date</Label>
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline">
-                  <Calendar1 />
+                <Button
+                  variant="outline"
+                  className="w-full justify-start text-left"
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
                   {selectedDate ? (
                     new Intl.DateTimeFormat("en-US", {
                       dateStyle: "long",
@@ -87,12 +89,12 @@ export function CreateInvoice() {
                   )}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent>
+              <PopoverContent align="start">
                 <Calendar
+                  mode="single"
                   selected={selectedDate}
                   onSelect={(date) => setSelectedDate(date || new Date())}
-                  mode="single"
-                  hidden={{ before: new Date() }}
+                  disabled={(date) => date < new Date()} // Disable past dates
                 />
               </PopoverContent>
             </Popover>
