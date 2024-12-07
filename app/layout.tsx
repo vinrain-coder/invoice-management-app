@@ -1,12 +1,12 @@
-import { Montserrat } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
-// Import Montserrat with additional weights
-const montserrat = Montserrat({
+const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-sans", // Custom CSS variable for Montserrat
-  weight: ["400", "500", "600", "700", "800"], // Added more weights
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} antialiased`}>{children}</body>
+      <body
+        className={cn("min-h-screen font-medium font-sans antialiased", fontSans.variable)}
+      >
+        {children}
+      </body>
     </html>
   );
 }
