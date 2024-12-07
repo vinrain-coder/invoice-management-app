@@ -13,8 +13,8 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Button } from "./ui/button";
-import { Calendar } from "./ui/calendar"; 
-import { Calendar as CalendarIcon } from "lucide-react"; 
+import { Calendar } from "./ui/calendar";
+import { Calendar as CalendarIcon } from "lucide-react";
 import { useActionState, useState } from "react";
 import { Textarea } from "./ui/textarea";
 import { SubmitButton } from "./SubmitButton";
@@ -54,6 +54,11 @@ export function CreateInvoice() {
             type="hidden"
             name={fields.date.name}
             value={selectedDate.toISOString()}
+          />
+          <input
+            type="hidden"
+            name={fields.total.name}
+            value={calculateTotal}
           />
 
           <div className="flex flex-col gap-1 w-fit mb-6">
