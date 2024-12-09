@@ -87,7 +87,7 @@ export async function createInvoice(prevState: any, formData: FormData) {
         currency: submission.value.currency as any,
       }),
       invoiceStatus: submission.value.status,
-      invoiceLink: "Test_InvoiceLink",
+      invoiceLink: `http://invoicer-eta-sandy.vercel.app/invoice/${data.id}`,
     },
   });
 
