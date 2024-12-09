@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -13,11 +12,11 @@ import { SubmitButton } from "@/components/SubmitButton";
 import { redirect } from "next/navigation";
 
 export default async function Login() {
-  // const session = await auth();
+  const session = await auth();
 
-  // if (session?.user) {
-  //   redirect("/dashboard");
-  // }
+  if (session?.user) {
+    redirect("/dashboard");
+  }
   return (
     <>
       <div className="flex h-screen w-full items-center justify-center px-4">
